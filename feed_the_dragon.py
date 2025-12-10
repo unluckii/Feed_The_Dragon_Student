@@ -4,35 +4,28 @@ import pygame, random
 pygame.init()
 
 def make_text(font_object, text, color, background_color):
-    # TODO: Use the given font_object to create and return a rendered text Surface.
-    #       - Use font_object.render(...)
-    #       - Make sure antialias is set to True
-    #       - Use the given text, color, and background_color
-    pass # TODO: remove this when finished
-
+    return font_object.render(text, True, color, background_color)
 
 def blit(surface, item, rect):
-    # TODO: Draw (blit) the given item (Surface) onto the given surface at the given rect.
-    #       - Use the surface.blit(...) method
-    pass # TODO: remove this when finished
-
+    surface.blit(item, rect)
 
 def fill(surface, color):
     # TODO: Fill the entire surface with the given color using surface.fill(...)
     pass # TODO: remove this when finished
-
 
 def update_display():
     # TODO: Update the entire display so that any drawing shows up on the screen.
     #       - Use pygame.display.update()
     pass # TODO: remove this when finished
 
-
 # Set display surface
 # TODO:
 #   - Create WINDOW_WIDTH and WINDOW_HEIGHT constants (e.g., 1000 x 400).
 #   - Use pygame.display.set_mode to create the display_surface with that size.
 #   - Set a window caption like "Feed the Dragon" using pygame.display.set_caption(...).
+WINDOW_WIDTH = 1000
+WINDOW_HEIGHT = 400
+display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 
 
 # Set FPS and clock
@@ -82,6 +75,13 @@ def update_display():
 #       * score_rect at the top-left (e.g., (10, 10))
 #       * title_rect centered horizontally at the top
 #       * lives_rect at the top-right (e.g., (WINDOW_WIDTH - 10, 10))
+game_over_text = make_text("GAMEOVER",  GREEN, DARKGREEN)
+game_over_rect = game_over_text.get_rect()
+game_over_rect.center = (WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2)
+
+continue_text = make_text("Press any key to play again", GREEN, DARKGREEN)
+continue_rect = continue_text.get_rect()
+continue_rect.center = (WINDOW_WIDTH // 2, WINDOW_HEIGHT // 2 + 32)
 
 
 # Set sounds and music
@@ -109,7 +109,6 @@ def update_display():
 # TODO:
 #   - Play the background music in a loop using pygame.mixer.music.play(...)
 #   - Create a variable named running and set it to True; this will control the main while loop.
-
 
 def tick():
     # TODO:
